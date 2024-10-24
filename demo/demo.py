@@ -18,8 +18,8 @@ from sam2.build_sam import build_sam2_camera_predictor
 import time
 
 
-sam2_checkpoint = "../checkpoints/sam2_hiera_small.pt"
-model_cfg = "sam2_hiera_s.yaml"
+sam2_checkpoint = "/data/robot/workspace/sam2/checkpoints/sam2_hiera_small.pt"
+model_cfg = "//data/robot/workspace/sam2/sam2/configs/sam2/sam2_hiera_s.yaml"
 
 predictor = build_sam2_camera_predictor(model_cfg, sam2_checkpoint)
 
@@ -57,9 +57,7 @@ while True:
 
         ## ! add bbox
         bbox = np.array([[600, 214], [765, 286]], dtype=np.float32)
-        _, out_obj_ids, out_mask_logits = predictor.add_new_prompt(
-            frame_idx=ann_frame_idx, obj_id=ann_obj_id, bbox=bbox
-        )
+        _, out_obj_ids, out_mask_logits = predictor.add_new_prompt(frame_idx=ann_frame_idx, obj_id=ann_obj_id, bbox=bbox)
 
         ##! add mask
         # mask_img_path="../notebooks/masks/aquarium/aquarium_mask.png"
@@ -76,9 +74,7 @@ while True:
         all_mask = np.zeros((height, width, 1), dtype=np.uint8)
         # print(all_mask.shape)
         for i in range(0, len(out_obj_ids)):
-            out_mask = (out_mask_logits[i] > 0.0).permute(1, 2, 0).cpu().numpy().astype(
-                np.uint8
-            ) * 255
+            out_mask = (out_mask_logits[i] > 0.0).permute(1, 2, 0).cpu().numpy().astype(np.uint8) * 255
 
             all_mask = cv2.bitwise_or(all_mask, out_mask)
 
