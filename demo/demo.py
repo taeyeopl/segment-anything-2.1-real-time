@@ -18,8 +18,10 @@ from sam2.build_sam import build_sam2_camera_predictor
 import time
 
 
-sam2_checkpoint = "/data/robot/workspace/sam2/checkpoints/sam2_hiera_small.pt"
-model_cfg = "//data/robot/workspace/sam2/sam2/configs/sam2/sam2_hiera_s.yaml"
+# sam2_checkpoint = "/data/robot/workspace/sam2/checkpoints/sam2_hiera_small.pt"
+# model_cfg = "//data/robot/workspace/sam2/sam2/configs/sam2/sam2_hiera_s.yaml"
+sam2_checkpoint = "./checkpoints/sam2.1_hiera_large.pt"
+model_cfg = "sam2.1_hiera_l.yaml"
 
 predictor = build_sam2_camera_predictor(model_cfg, sam2_checkpoint)
 

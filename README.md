@@ -38,8 +38,8 @@ Then SAM-2-online can be used in a few lines as follows for image and video and 
 import torch
 from sam2.build_sam import build_sam2_camera_predictor
 
-checkpoint = "./checkpoints/sam2_hiera_large.pt"
-model_cfg = "sam2_hiera_l.yaml"
+checkpoint = "./checkpoints/sam2.1_hiera_large.pt"
+model_cfg = "sam2.1_hiera_l.yaml"
 predictor = build_sam2_camera_predictor(model_cfg, checkpoint)
 
 cap = cv2.VideoCapture(<your video or camera >)
