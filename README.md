@@ -1,7 +1,8 @@
-# segment-anything-2 real-time
+# segment-anything-2.1 real-time
 Run Segment Anything Model 2 on a **live video stream**
 
 ## News
+- 24/10/2024 : Update build_sam2_camera_predictor for SAM 2.1
 - 20/08/2024 : Fix management of ```non_cond_frame_outputs``` for better performance and add bbox prompt
 
 ## Demos
@@ -30,7 +31,7 @@ cd checkpoints
 ./download_ckpts.sh
 ```
 
-Then SAM-2-online can be used in a few lines as follows for image and video and **camera** prediction.
+Then SAM-2.1-online can be used in a few lines as follows for image and video and **camera** prediction.
 
 ### Camera prediction
 
@@ -66,3 +67,5 @@ with torch.inference_mode(), torch.autocast("cuda", dtype=torch.bfloat16):
 ## References:
 
 - SAM2 Repository: https://github.com/facebookresearch/segment-anything-2
+- SAM2-real-time Repository: https://github.com/Gy920/segment-anything-2-real-time
+
